@@ -1,7 +1,5 @@
 # coding=utf-8
-import sys
-import time
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from catalogo_app.models import Tipo_Archivo, Categoria, Tipo_Imagen, Orientacion, Permisos, Perspectiva, Catalogo
 
 
@@ -15,8 +13,8 @@ class Command(BaseCommand):
                             dest='importar_catalogo',
                             default=False,
                             help='Importa archivos del catalogo')
-        
-	parser.add_argument('--importar_tipo_archivo',
+
+        parser.add_argument('--importar_tipo_archivo',
                             action='store_true',
                             dest='importar_tipo_archivo',
                             default=False,
@@ -64,7 +62,7 @@ class Command(BaseCommand):
         # ...
         if options['importar_catalogo']:
             """
-            Comando para importar el catalogo 
+            Comando para importar el catalogo
             """
 
             archivo = options['archivo']
@@ -79,8 +77,8 @@ class Command(BaseCommand):
                 D = catalogo.strip(' \t\n\r')
                 E = catalogo.strip(' \t\n\r')
                 F = catalogo.strip(' \t\n\r')
-                print catalogo_id, catalogo
-                 
+                print catalogo
+
                 try:
                     # ojo para la imagen grabar de la siguinete manera image = 'image/'+image
                     catalogo = Catalogo(id=A, tipo_archivo=tipo_archivo)
@@ -93,13 +91,12 @@ class Command(BaseCommand):
                     catalogo.save()
 
                 except:
-                    print "Ocurrio un error al intentar grabar"  
+                    print "Ocurrio un error al intentar grabar"
                     break
-                
 
         if options['importar_tipo_archivo']:
             """
-            Comando para importar tipo archivo 
+            Comando para importar tipo archivo
             """
 
             archivo = options['archivo']
@@ -110,16 +107,15 @@ class Command(BaseCommand):
                 [tipo_archivo_id, tipo_archivo] = fileLine.split("|")
                 tipo_archivo = tipo_archivo.strip(' \t\n\r')
                 print tipo_archivo_id, tipo_archivo
-                 
+
                 try:
                     # ojo para la imagen grabar de la siguinete manera image = 'image/'+image
                     tipo_archivo = Tipo_Archivo(id=tipo_archivo_id, tipo_archivo=tipo_archivo)
                     tipo_archivo.save()
 
                 except:
-                    print "Ocurrio un error al intentar grabar"  
+                    print "Ocurrio un error al intentar grabar"
                     break
-                
 
         if options['importar_categoria']:
             """
@@ -134,20 +130,19 @@ class Command(BaseCommand):
                 [categoria_id, categoria] = fileLine.split("|")
                 categoria = categoria.strip(' \t\n\r')
                 print categoria_id, categoria
-                 
+
                 try:
                     # ojo para la imagen grabar de la siguinete manera image = 'image/'+image
                     categoria = Categoria(id=categoria_id, categoria=categoria)
                     categoria.save()
 
                 except:
-                    print "Ocurrio un error al intentar grabar"  
+                    print "Ocurrio un error al intentar grabar"
                     break
-                
 
         if options['importar_tipo_imagen']:
             """
-            Comando para importar tipo archivo 
+            Comando para importar tipo archivo
             """
 
             archivo = options['archivo']
@@ -158,20 +153,19 @@ class Command(BaseCommand):
                 [tipo_imagen_id, tipo_imagen] = fileLine.split("|")
                 tipo_imagen = tipo_imagen.strip(' \t\n\r')
                 print tipo_imagen_id, tipo_imagen
-                 
+
                 try:
                     # ojo para la imagen grabar de la siguinete manera image = 'image/'+image
                     tipo_imagen = Tipo_Imagen(id=tipo_imagen_id, tipo_imagen=tipo_imagen)
                     tipo_imagen.save()
 
                 except:
-                    print "Ocurrio un error al intentar grabar"  
+                    print "Ocurrio un error al intentar grabar"
                     break
-                
 
         if options['importar_orientacion']:
             """
-            Comando para importar tipo archivo 
+            Comando para importar tipo archivo
             """
 
             archivo = options['archivo']
@@ -182,20 +176,19 @@ class Command(BaseCommand):
                 [orientacion_id, orientacion] = fileLine.split("|")
                 orientacion = orientacion.strip(' \t\n\r')
                 print orientacion_id, orientacion
-                 
+
                 try:
                     # ojo para la imagen grabar de la siguinete manera image = 'image/'+image
                     orientacion = Orientacion(id=orientacion_id, orientacion=orientacion)
                     orientacion.save()
 
                 except:
-                    print "Ocurrio un error al intentar grabar"  
+                    print "Ocurrio un error al intentar grabar"
                     break
-                
 
         if options['importar_permisos']:
             """
-            Comando para importar tipo archivo 
+            Comando para importar tipo archivo
             """
 
             archivo = options['archivo']
@@ -206,20 +199,19 @@ class Command(BaseCommand):
                 [permisos_id, permisos] = fileLine.split("|")
                 permisos = permisos.strip(' \t\n\r')
                 print permisos_id, permisos
-                 
+
                 try:
                     # ojo para la imagen grabar de la siguinete manera image = 'image/'+image
                     permisos = Permisos(id=permisos_id, permisos=permisos)
                     permisos.save()
 
                 except:
-                    print "Ocurrio un error al intentar grabar"  
+                    print "Ocurrio un error al intentar grabar"
                     break
-                
 
         if options['importar_perspectiva']:
             """
-            Comando para importar tipo archivo 
+            Comando para importar tipo archivo
             """
 
             archivo = options['archivo']
@@ -230,12 +222,12 @@ class Command(BaseCommand):
                 [perspectiva_id, perspectiva] = fileLine.split("|")
                 perspectiva = perspectiva.strip(' \t\n\r')
                 print perspectiva_id, perspectiva
-                 
+
                 try:
                     # ojo para la imagen grabar de la siguinete manera image = 'image/'+image
                     perspectiva = Perspectiva(id=perspectiva_id, perspectiva=perspectiva)
                     perspectiva.save()
 
                 except:
-                    print "Ocurrio un error al intentar grabar"  
+                    print "Ocurrio un error al intentar grabar"
                     break

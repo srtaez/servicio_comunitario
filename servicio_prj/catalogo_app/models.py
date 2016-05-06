@@ -51,7 +51,7 @@ class Tag(models.Model):
 
 
 class Catalogo(models.Model):
-    image = models.FileField(upload_to="Archivos/", default='None')    
+    image = models.FileField(upload_to="Archivos/", default='None')
     descripcion = models.TextField()
     claves = models.TextField()
     tipo_archivo = models.ForeignKey(Tipo_Archivo, default=1)
@@ -72,4 +72,3 @@ class Catalogo(models.Model):
 
     def __unicode__(self):
         return unicode(self.id)
-

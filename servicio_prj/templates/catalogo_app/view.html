@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+
+<table class="table table-bordered table-striped">
+    <tr >
+        <td colspan="10"><b>Detail</td>
+    </tr>
+    <tr>
+          <td><b>H07</td>
+          <td>{{espectro.H07}}</td>
+          <td><b>mass2</td>
+          <td>{{espectro.mass2}}</td>
+          <td><b>RA</td>
+          <td>{{espectro.RA}}</td>
+          <td><b>DEC</td>
+          <td>{{espectro.DEC}}</td>
+          <td><b>ints</td>
+          <td>{{espectro.ints}}</td>
+    </tr>
+
+    <tr>
+          <td><b>SpT</td>
+          <td>{{espectro.SpT}}</td>
+          <td><b>SpTe</td>
+          <td>{{espectro.SpTe}}</td>
+          <td><b>AvPM</td>
+          <td>{{espectro.AvPM}}</td>
+          <td><b>MEM</td>
+          <td>{{espectro.MEM}}</td>
+          <td><b>EWLiI</td>
+          <td>{{espectro.EWLiI}}</td>
+    </tr>
+
+    <tr>
+          <td><b>LiI_fl1</td>
+          <td>{{espectro.LiI_fl1}}</td>
+          <td><b>LiI_fl2</td>
+          <td>{{espectro.LiI_fl2}}</td>
+          <td><b>Liref</td>
+          <td>{{espectro.Liref}}</td>
+          <td><b>RV_fl1</td>
+          <td>{{espectro.RV_fl1}}</td>
+          <td><b>RVref</td>
+          <td>{{espectro.RVref}}</td>
+    </tr>
+
+    <tr>
+          <td><b>EWHa</td>
+          <td>{{espectro.EWHa}}</td>
+          <td><b>Ha_fl1</td>
+          <td>{{espectro.Ha_fl1}}</td>
+          <td><b>Ha_fl2</td>
+          <td>{{espectro.Ha_fl2}}</td>
+          <td><b>NaI_fl</td>
+          <td>{{espectro.NaI_fl}}</td>
+          <td><b>disk</td>
+          <td>{{espectro.disk}}</td>
+    </tr>
+
+    <tr>
+          <td><b>Xray_ref</td>
+          <td>{{espectro.Xray_ref}}</td>
+          <td><b>Var_ref</td>
+          <td>{{espectro.Var_ref}}</td>
+          <td><b>PM_fl</td>
+          <td>{{espectro.PM_fl}}</td>
+          <td><b>Dist_fl</td>
+          <td>{{espectro.Dist_fl}}</td>
+          <td><b>Prob_phot</td>
+          <td>{{espectro.Prob_phot}}</td>
+    </tr>
+
+    <tr>
+          <td><b>U</td>
+          <td>{{espectro.U}}</td>
+          <td><b>Ue</td>
+          <td>{{espectro.Ue}}</td>
+          <td><b>B</td>
+          <td>{{espectro.B}}</td>
+          <td><b>Be</td>
+          <td>{{espectro.Be}}</td>
+          <td><b>V</td>
+          <td>{{espectro.V}}</td>
+    </tr>
+
+    <tr>
+          <td><b>Ve</td>
+          <td>{{espectro.Ve}}</td>
+          <td><b>R</td>
+          <td>{{espectro.R}}</td>
+          <td><b>Re</td>
+          <td>{{espectro.Re}}</td>
+          <td><b>I</td>
+          <td>{{espectro.I}}</td>
+          <td><b>Ie</td>
+          <td>{{espectro.Ie}}</td>
+    </tr>
+
+    <tr>
+          <td><b>Ref_opt</td>
+          <td>{{espectro.Ref_opt}}</td>
+          <td><b>[3.6]</td>
+          <td>{{espectro.D36}}</td>
+          <td><b>[3.6]e</td>
+          <td>{{espectro.D36e}}</td>
+          <td><b>[4.5]</td>
+          <td>{{espectro.D45}}</td>
+          <td><b>[4.5]e</td>
+          <td>{{espectro.D45e}}</td>
+    </tr>
+
+    <tr>
+          <td><b>[5.8]</td>
+          <td>{{espectro.D58}}</td>
+          <td><b>[5.8]e</td>
+          <td>{{espectro.D58e}}</td>
+          <td><b>[8.0]</td>
+          <td>{{espectro.D80}}</td>
+          <td><b>[8.0]e</td>
+          <td>{{espectro.D80e}}</td>
+          <td><b>[24]</td>
+          <td>{{espectro.D24}}</td>
+    </tr>
+
+    <tr>      
+          
+          <td><b>[24]e</td>
+          <td>{{espectro.D24e}}</td>
+          
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+    </tr>
+
+          
+    <tr>
+          <td>Simbad link</td>
+          <td colspan="9">
+            {% if espectro.simbad_url %}
+             <a href="{{ espectro.simbad_url }}" target="_blank">view</a>
+            {% else%} 
+              url no found
+            {% endif %}
+           </td>
+    </tr>
+
+
+  {% for group in user.groups.all %}
+    {% if group.name == 'sigmaori' or group.name == 'guest' %}
+
+    <tr>
+          <td>fits</td>
+          <td colspan="9">
+            {% if espectro.fits %}
+             <a href="{{ MEDIA_URL}}{{espectro.fits}}">Download</a>
+            {% else%} 
+              fits no found
+            {% endif %}
+           </td>
+    </tr>
+    
+    {% endif %}
+  {% endfor %}
+
+
+    <tr>
+          <td>spec</td>
+          <td colspan="9">
+            {% if espectro.spec %}
+            <img src="{{ MEDIA_URL}}{{espectro.spec}}" alt="{{espectro.spec}}" />
+            {% else%} 
+              image no found
+            {% endif %}
+          </td>
+    </tr>
+
+    <tr>
+          <td>sed</td>
+          <td colspan="9">
+            {% if espectro.sed %}
+              <img src="{{ MEDIA_URL}}{{ espectro.sed }}" alt="{{espectro.sed}}" />
+            {% else%} 
+              image no found
+            {% endif %}
+          </td>
+    </tr>
+
+    
+ </table>
+
+<br>
+
+{% if backlist == 'large' %}
+       
+<a href="{% url 'sigmaori_list' %}" class="btn btn-primary"><i class="icon-circle-arrow-left icon-white"></i> Back to list</a>
+{% else %}
+
+<a href="{% url 'sigmaori_list_short' %}" class="btn btn-primary"><i class="icon-circle-arrow-left icon-white"></i> Back to list</a>
+
+{% endif %}
+
+{% endblock %}
