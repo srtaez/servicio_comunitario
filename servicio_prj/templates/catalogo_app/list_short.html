@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+{% for group in user.groups.all %}
+    {% if group.name == 'sigmaori' %}
+       <a href="{% url 'sigmaori_create' %}" class="btn btn-success">Create new spec</a>
+       <br><br>
+    {% endif %}
+{% endfor %}
+
+<table class="table table-striped">
+    <tr>
+      <th>ID</th>
+      <th>mass2</th>
+      <th><a href="{% url 'sigmaori_list' %}?order=RA">RA</a></th>
+      <th><a href="{% url 'sigmaori_list' %}?order=DEC">DEC</a></th>
+      <th>Disk</th>
+      <th>H07</th>
+      <th>Spte</th>
+      <th>Spte</th>
+      <th>MEM</th>
+      <th>V</th>
+      <th>Action</th>
+      
+     </tr>
+    {% for espectro in object_list %}
+    <tr>
+      <td>{{espectro.id}}</td>
+      <td>{{espectro.mass2}}</td>
+      <td>{{espectro.RA}}</td>
+      <td>{{espectro.DEC}}</td>
+      <td>{{espectro.disk}}</td>
+      <td>{{espectro.H07}}</td>
+      <td>{{espectro.SpT}}</td>
+      <td>{{espectro.SpTe}}</td>
+      <td>{{espectro.MEM}}</td>
+      <td>{{espectro.V}}</td>
+      <td>
+        <a href="{% url 'sigmaori_view' espectro.id %}">Detail</a>
+        {% for group in user.groups.all %}
+            {% if group.name == 'sigmaori' %}
+               <a href="{% url 'sigmaori_update' espectro.id %}">Update</a>
+            {% endif %}
+        {% endfor %}
+      </td>
+
+    </tr>
+    {% endfor %}
+  </table>
+
+{% include "_pagination.html" %}
+
+{% endblock %}
+
+

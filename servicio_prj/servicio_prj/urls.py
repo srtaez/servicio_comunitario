@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.views.generic import TemplateView
+from servicio_prj.views import MainView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', MainView.as_view(), name='home'),
+    url(r'acerca$', TemplateView.as_view(template_name='acerca.html'),
+        name='acerca'),
+    url(r'contactos$', TemplateView.as_view(template_name='contactos.html'),
+        name='contactos'),
+    url(r'^catalogo/', include('catalogo_app.urls')),
 ]

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Página principal{% endblock %}
+
+{% block content %}
+
+ <!-- Example row of columns -->
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h3>WELCOME TO THE SPECTROSCOPIC CENSUS IN THE SIGMA ORIONIS CLUSTER</h3>
+        <p>
+
+       This web page shows results of the spectroscopic survey of the young stellar population of the sigma Orionis cluster. Spectroscopic data for spectral typing come from several spectrograph with similar spectroscopic coverage and resolution: Hectospec (MMTO), FAST (FWLO), OSU-CCDS (MDMO), Boller & Chiven (SPMO) and Boller and Chiven (Observatorio Guillermo-Haro).  We use the SPTCLASS tool to obtain spectral types and to measure youth-related spectroscopic signatures. Members of the sigma Orionis cluster are confirmed by the presence of lithium in absorption, strong Halpha in emission or weak gravity-sensitive features. Additionally, we have obtained high resolution spectra (R~34000) for 169 stars which allow us to obtain membership by radial velocity and to study the relation between the infrared excesses and the Halpha profile of disk bearing stars. We compile information about members selected previously by the presence of lithium in absorption, radial velocity, X-ray sources above the zero age main sequence and infrared excess produced by circumstellar disks. Additional membership analysis includes variability, proper motion distribution, distance from the center of the cluster and photometric probability estimated using the V vs. V-J color magnitude diagram. This contribution constitutes the largest homogeneous spectroscopic data set of the sigma Orionis cluster. We expect to increase this spectroscopic database and the membership analisys for additional stars in the sigma Orionis cluster.
+
+       </p>
+
+       <p>"We kindly request users of this page to acknowledge this work by including the following reference in any published material: Hernandez et al 2014"
+       </p>
+
+      <p>
+        Please, report any comments or suggestion in this site to Jesus Hernandez (email: hernandj@cida.ve).
+      </p>
+
+
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Catalogo</h2>
+          <p><a href="{% url 'catalogo_list' %}" >Catalogo</a></p>
+
+        </div>
+    </div>
+    <hr>
+
+{% endblock content %}

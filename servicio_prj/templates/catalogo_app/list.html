@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<table class="table table-striped">
+    <tr>
+      <th>Descripión</th>
+      <th>Tipo de archivo</th>
+      <th>Categoría</th>
+
+      <th>Action</th>
+
+     </tr>
+    {% for catalogo in object_list %}
+    <tr>
+      <td>{{catalogo.descripcion}}</td>
+      <td>{{catalogo.tipo_archivo}}</td>
+      <td>{{catalogo.categoria}}</td>
+      <td>
+
+        <a href="{% url 'catalogo_view' espectro.id %}">Detail</a>
+
+      </td>
+
+    </tr>
+    {% endfor %}
+  </table>
+
+{% include "_pagination.html" %}
+
+{% endblock %}
